@@ -52,14 +52,6 @@ app.get('/', (req, res) => {
       })
     }
   })
-
-  //   db.query(sql, (err, result) => {
-  //     if (err) {
-  //       throw err
-  //     } else {
-  //       res.render('index', { result })
-  //     }
-  //   })
 })
 
 app.get('/read', (req, res) => {
