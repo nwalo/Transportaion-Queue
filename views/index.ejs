@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Transport Queue</title>
+    <title>Transportation Queue</title>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -14,8 +14,13 @@
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
+    <header>
+      <div> <h1>TRANSPORTATION  QUEUE</h1> </div>
+    </header>
+    
     <main>
       <div class="lhs">
+        <h2>Delivery List</h2>
         <table class="table">
           <thead>
             <tr>
@@ -50,6 +55,7 @@
       </div>
 
       <div class="rhs">
+        <h2>Planner Queue System</h2>
         <table class="table">
           <thead>
             <tr>
@@ -138,7 +144,7 @@
                 id="7"
                 ondrop="drop1(event)"
               ></td> -->
-              <td>
+              <td class="hide">
                 <form id="form1" method="post" action="/slot1">
                   <input type="checkbox" id="check1" />
                   <input type="text" name="planner" value="" id="input1" hidden />
@@ -165,7 +171,7 @@
                   <% } %>
               <% } %>
               
-              <td>
+              <td class="hide">
                 <form id="form2" method="post" action="/slot2">
                   <input type="checkbox" id="check2" />
                   <input type="text" name="planner" value="" id="input2" hidden />
@@ -191,7 +197,7 @@
                ><%= result[i].slot3 %></td>
                   <% } %>
               <% } %>
-              <td>
+              <td class="hide">
                 <form id="form3" method="post" action="/slot3">
                   <input type="checkbox" id="check3" />
                   <input type="text" name="planner" value="" id="input3" hidden />
@@ -217,7 +223,7 @@
                ><%= result[i].slot4 %></td>
                   <% } %>
               <% } %>
-              <td>
+              <td class="hide">
                 <form id="form4" method="post" action="/slot4">
                   <input type="checkbox" id="check4" />
                   <input type="text" name="planner" value="" id="input4" hidden />

@@ -82,9 +82,9 @@ app.get('/createCustomerTable', (req, res) => {
 app.get('/newCustomer', (req, res) => {
   let sql = 'INSERT INTO customer SET ?'
   let data = {
-    customerName: 'Larry',
-    pickUpLocation: 'Abia',
-    dropOffLocation: 'Ibadan',
+    customerName: 'Oluwaniferanmi',
+    pickUpLocation: 'Argentina',
+    dropOffLocation: 'Madagascar',
   }
   db.query(sql, data, (err, result) => {
     if (err) {

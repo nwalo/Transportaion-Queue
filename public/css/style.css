@@ -7,12 +7,21 @@ html {
 main {
   display: flex;
   justify-content: space-around;
-  margin: 100px 0;
+  margin: 40px 0;
 }
 
 .lhs {
   width: 40%;
-  margin-left: 40px;
+}
+
+.rhs thead {
+  text-align: center;
+}
+
+h1,
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .pick:hover {
@@ -41,4 +50,40 @@ p {
   background-color: #5650a7;
   color: white;
   text-align: center;
+}
+
+header {
+  padding: 70px 0 50px;
+  background-color: #5650a7;
+  color: white;
+}
+
+.hide {
+  display: none;
+}
+
+@media (max-width: 1240px) {
+  main {
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+  }
+
+  .rhs {
+    margin-top: 50px;
+  }
+
+  .lhs {
+    width: 70%;
+  }
+}
+
+@media (max-width: 768px) {
+  .lhs {
+    width: 90%;
+  }
+
+  .rhs {
+    width: 100%;
+  }
 }
