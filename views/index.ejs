@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transport Queue</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="lhs">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Customer ID</th>
+              <th scope="col">Customer Name</th>
+              <th scope="col">Pick Up Location</th>
+              <th scope="col">Drop off Location</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i = 0; i < customer.length; i++) { %>
+              <tr>
+              <th scope="row"><%= customer[i].id %></th>
+              <td>
+                <span> <%= customer[i].customerName %>  </span>
+                <span
+                  class="pick"
+                  draggable="true"
+                  ondragstart="drag(event)"
+                  id="drag<%= i+1 %>"
+                >
+                  <%= customer[i].customerName %>
+                </span>
+              </td>
+              <td><%= customer[i].pickUpLocation %></td>
+              <td><%= customer[i].dropOffLocation %></td>
+            </tr>
+           <% } %>
+            <tr>
+              <th scope="row">1</th>
+              <td>
+                <span>Mark</span>
+                <span
+                  id="customer1"
+                  class="pick"
+                  draggable="true"
+                  ondragstart="drag(event)"
+                  id="drag1"
+                >
+                  Mark
+                </span>
+              </td>
+              <td>Lagos</td>
+              <td>Ogun</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>
+                <span>Nwalo</span>
+                <span
+                  id="customer2"
+                  class="pick"
+                  draggable="true"
+                  ondragstart="drag(event)"
+                  id="drag2"
+                >
+                  Nwalo
+                </span>
+              </td>
+              <td>Kano</td>
+              <td>Ondo</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>
+                <span>Larry</span>
+                <span
+                  id="customer3"
+                  class="pick"
+                  draggable="true"
+                  ondragstart="drag(event)"
+                  id="drag3"
+                >
+                  Larry
+                </span>
+              </td>
+              <td>Abia</td>
+              <td>Lagos</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <script>
+        const today = new Date()
+        const options = {
+          weekday: 'long',
+        }
+        const day1 = new Date(today)
+        day1.setDate(day1.getDate() + 1)
+        const day2 = new Date(today)
+        day2.setDate(day2.getDate() + 2)
+        const day3 = new Date(today)
+        day3.setDate(day3.getDate() + 3)
+        const day4 = new Date(today)
+        day4.setDate(day4.getDate() + 4)
+        const day5 = new Date(today)
+        day5.setDate(day5.getDate() + 5)
+        const day6 = new Date(today)
+        day6.setDate(day6.getDate() + 6)
+
+        console.log(today.toLocaleDateString('en-us', { weekday: 'long' }))
+        console.log(today.toLocaleDateString())
+        console.log(day1, day4, day5, day6)
+      </script>
+
+      <div class="rhs">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">
+                Day 1
+                <p>1/2/22</p>
+              </th>
+              <th scope="col">
+                Day 2
+                <p>2/2/22</p>
+              </th>
+              <th scope="col">
+                Day 3
+                <p>3/2/22</p>
+              </th>
+              <th scope="col">
+                Day 4
+                <p>4/2/22</p>
+              </th>
+              <th scope="col">
+                Day 5
+                <p>5/2/22</p>
+              </th>
+              <th scope="col">
+                Day 6
+                <p>6/2/22</p>
+              </th>
+              <th scope="col">
+                Day 7
+                <p>7/2/22</p>
+              </th>
+              <!-- <th scope="col">Slot 2</th>
+              <th scope="col">Slot 3</th>
+              <th scope="col">Slot 4</th> -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr id="m">
+              <th scope="row">
+                Slot 1
+              </th>
+              <% for(let i = 0; i < result.length; i++){ %>
+                <% if (result[i].slot1 !== null) { %>
+                  <td class="booked"
+                ondragover="allowDrop(event)"
+                id="<%= i+1 %>"
+                ondrop="drop1(event)"
+              ><%= result[i].slot1 %></td>
+                <% } else{ %>
+                <td class=""
+                ondragover="allowDrop(event)"
+                id="<%= i+1 %>"
+                ondrop="drop1(event)"
+               ><%= result[i].slot1 %></td>
+                  <% } %>
+              <% } %>
+              
+              <!-- <td
+                ondragover="allowDrop(event)"
+                id="2"
+                ondrop="drop1(event)"
+              ></td>
+              <td
+                ondragover="allowDrop(event)"
+                id="3"
+                ondrop="drop1(event)"
+              ></td>
+              <td
+                ondragover="allowDrop(event)"
+                id="4"
+                ondrop="drop1(event)"
+              ></td>
+              <td
+                ondragover="allowDrop(event)"
+                id="5"
+                ondrop="drop1(event)"
+              ></td>
+              <td
+                ondragover="allowDrop(event)"
+                id="6"
+                ondrop="drop1(event)"
+              ></td>
+              <td
+                ondragover="allowDrop(event)"
+                id="7"
+                ondrop="drop1(event)"
+              ></td> -->
+              <td>
+                <form id="form1" method="post" action="/slot1">
+                  <input type="checkbox" id="check1" />
+                  <input type="text" name="planner" value="" id="input1" hidden />
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Slot 2
+              </th>
+              <% for(let i = 0; i < result.length; i++){ %>
+                <% if (result[i].slot2 !== null) { %>
+                  <td class="booked"
+                ondragover="allowDrop(event)"
+                id="<%= i+1 %>"
+                ondrop="drop2(event)"
+              ><%= result[i].slot2 %></td>
+                <% } else{ %>
+                <td class=""
+                ondragover="allowDrop(event)"
+                id="<%= i+1 %>"
+                ondrop="drop2(event)"
+               ><%= result[i].slot2 %></td>
+                  <% } %>
+              <% } %>
+              
+              <td>
+                <form id="form2" method="post" action="/slot2">
+                  <input type="checkbox" id="check2" />
+                  <input type="text" name="planner" value="" id="input2" hidden />
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Slot 3
+              </th>
+              <% for(let i = 0; i < result.length; i++){ %>
+                <% if (result[i].slot3 !== null) { %>
+                  <td class="booked"
+                ondragover="allowDrop(event)"
+                id="<%= i+1 %>"
+                ondrop="drop3(event)"
+              ><%= result[i].slot3 %></td>
+                <% } else{ %>
+                <td class=""
+                ondragover="allowDrop(event)"
+                id="<%= i+1 %>"
+                ondrop="drop3(event)"
+               ><%= result[i].slot3 %></td>
+                  <% } %>
+              <% } %>
+              <td>
+                <form id="form3" method="post" action="/slot3">
+                  <input type="checkbox" id="check3" />
+                  <input type="text" name="planner" value="" id="input3" hidden />
+                </form>
+              </td>
+            </tr>
+            <tr>
+              <th scope="row">
+                Slot 4
+              </th>
+              <% for(let i = 0; i < result.length; i++){ %>
+                <% if (result[i].slot4 !== null) { %>
+                  <td class="booked"
+                ondragover="allowDrop(event)"
+                id="<%= i+1 %>"
+                ondrop="drop4(event)"
+              ><%= result[i].slot4 %></td>
+                <% } else{ %>
+                <td class=""
+                ondragover="allowDrop(event)"
+                id="<%= i+1 %>"
+                ondrop="drop4(event)"
+               ><%= result[i].slot4 %></td>
+                  <% } %>
+              <% } %>
+              <td>
+                <form id="form4" method="post" action="/slot4">
+                  <input type="checkbox" id="check4" />
+                  <input type="text" name="planner" value="" id="input4" hidden />
+                </form>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="/js/index.js"></script>
+  </body>
+</html>

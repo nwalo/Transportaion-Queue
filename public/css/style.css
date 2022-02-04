@@ -1,0 +1,44 @@
+.body,
+html {
+  padding: 0px;
+  margin: 0px;
+}
+
+main {
+  display: flex;
+  justify-content: space-around;
+  margin: 100px 0;
+}
+
+.lhs {
+  width: 40%;
+  margin-left: 40px;
+}
+
+.pick:hover {
+  cursor: pointer;
+  background-color: #e0e0e0;
+}
+
+.rhs td {
+  border: 1px solid black;
+}
+
+span {
+  position: absolute;
+}
+
+.t {
+  color: bisque;
+}
+
+p {
+  margin: 0px;
+  padding: 0px;
+}
+
+.booked {
+  background-color: #5650a7;
+  color: white;
+  text-align: center;
+}
