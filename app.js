@@ -17,7 +17,7 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
   if (err) {
-    console.log('err')
+    console.log(err)
   } else {
     console.log('mysql connected ...')
   }
@@ -29,7 +29,6 @@ app.get('/createdb', (req, res) => {
     if (err) {
       console.log('err')
     } else {
-      console.log(result)
       res.send('database created')
     }
   })
@@ -82,9 +81,9 @@ app.get('/createCustomerTable', (req, res) => {
 app.get('/newCustomer', (req, res) => {
   let sql = 'INSERT INTO customer SET ?'
   let data = {
-    customerName: 'Oluwaniferanmi',
-    pickUpLocation: 'Argentina',
-    dropOffLocation: 'Madagascar',
+    customerName: 'Abubakar',
+    pickUpLocation: 'Yobe',
+    dropOffLocation: 'Ibadan',
   }
   db.query(sql, data, (err, result) => {
     if (err) {
@@ -111,7 +110,7 @@ app.get('/createPlannerTable', (req, res) => {
 
 const today = new Date()
 const currentDate = new Date('2022, 02, 04')
-console.log(currentDate.toLocaleDateString())
+// console.log(currentDate.toLocaleDateString())
 
 const options = {
   weekday: 'long',
@@ -133,7 +132,16 @@ day7.setDate(day7.getDate() + 6)
 
 // console.log(today.toLocaleDateString('en-us', { weekday: 'long' }))
 // console.log(today.toLocaleDateString())
-// console.log(day1.toLocaleDateString())
+let mydate = { date: '2022-02-12' }
+
+let sql = 'INSERT INTO planner SET ?'
+db.query(sql, mydate, (err, result) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('ok')
+  }
+})
 
 app.post('/slot1', (req, res) => {
   const key = Number(req.body.planner.slice(0, 1))
