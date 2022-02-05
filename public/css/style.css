@@ -65,7 +65,6 @@ header {
 @media (max-width: 1240px) {
   main {
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
   }
 

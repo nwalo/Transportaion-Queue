@@ -68,14 +68,3 @@ function drop4(ev) {
     $('#form4').submit()
   }, 1000)
 }
-
-// const today = new Date();
-// const options = {
-// 	weekday: 'long'
-// };
-// const tomorrow = new Date(today);
-// tomorrow.setDate(tomorrow.getDate() + 1);
-
-// console.log(today.toLocaleDateString('en-us', { weekday: 'long' }));
-// console.log(today.toLocaleDateString());
-// console.log(tomorrow.getDate());
