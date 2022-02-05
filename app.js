@@ -8,20 +8,54 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
   host: 'us-cdbr-east-05.cleardb.net',
   user: 'bcd2aa85e0d257',
   password: 'd18fe272',
   database: 'heroku_314cba1ab45c526',
 })
 
-db.connect((err) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log('mysql connected ...')
-  }
-})
+// const db = mysql.createConnection({
+//   host: 'localhost',
+//   user: 'root',
+//   password: '',
+//   database: 'yipproject',
+// })
+
+// db.connect((err) => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log('mysql connected ...')
+//   }
+// })
+
+// HANDLE DISCONNECTION
+
+// function handleDisconnect() {
+//   db.connect(function (err) {
+//     // The server is either down // or restarting (takes a while sometimes).
+//     if (err) {
+//       // console.log('error when connecting to db:', err)
+//       // setTimeout(handleDisconnect, 2000) // We introduce a delay before attempting to reconnect,to avoid a hot loop, and to allow our node script to
+//     } else {
+//       console.log('mysql connected ...')
+//     }
+//   }) // process asynchronous requests in the meantime. If you're also serving http, display a 503 error.
+
+//   db.on('error', function (err) {
+//     console.log('db error', err)
+//     if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+//       // Connection to the MySQL server is usually
+//       handleDisconnect() // lost due to either server restart, or a
+//     } else {
+//       // connnection idle timeout (the wait_timeout
+//       throw err // server variable configures this)
+//     }
+//   })
+// }
+
+// handleDisconnect()
 
 app.get('/createdb', (req, res) => {
   let sql = 'CREATE DATABASE yipProject'
@@ -106,41 +140,6 @@ app.get('/createPlannerTable', (req, res) => {
       res.send('Planner Table created ...')
     }
   })
-})
-
-const today = new Date()
-const currentDate = new Date('2022, 02, 04')
-// console.log(currentDate.toLocaleDateString())
-
-const options = {
-  weekday: 'long',
-}
-const day1 = new Date(today)
-day1.setDate(day1.getDate() + 0)
-const day2 = new Date(today)
-day2.setDate(day2.getDate() + 1)
-const day3 = new Date(today)
-day3.setDate(day3.getDate() + 2)
-const day4 = new Date(today)
-day4.setDate(day4.getDate() + 3)
-const day5 = new Date(today)
-day5.setDate(day5.getDate() + 4)
-const day6 = new Date(today)
-day6.setDate(day6.getDate() + 5)
-const day7 = new Date(today)
-day7.setDate(day7.getDate() + 6)
-
-// console.log(today.toLocaleDateString('en-us', { weekday: 'long' }))
-// console.log(today.toLocaleDateString())
-let mydate = { date: '2022-02-12' }
-
-let sql = 'INSERT INTO planner SET ?'
-db.query(sql, mydate, (err, result) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log('ok')
-  }
 })
 
 app.post('/slot1', (req, res) => {

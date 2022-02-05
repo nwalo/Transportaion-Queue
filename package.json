@@ -4,7 +4,6 @@
   "description": "a transportation queue database",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },"engines": {
     "node": "12.18.0"
