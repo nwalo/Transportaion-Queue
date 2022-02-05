@@ -9,10 +9,10 @@ app.use(express.static('public'))
 app.set('view engine', 'ejs')
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: '',
-  database: 'yipProject',
+  host: 'us-cdbr-east-05.cleardb.net',
+  user: 'bcd2aa85e0d257',
+  password: 'd18fe272',
+  database: 'heroku_314cba1ab45c526',
 })
 
 db.connect((err) => {
