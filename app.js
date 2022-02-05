@@ -232,6 +232,11 @@ app.post('/slot4', (req, res) => {
   res.redirect('/')
 })
 
-app.listen('6565', () => {
-  console.log('app running at port 6565 ...')
+let port = process.env.PORT
+if (port == null || port == '') {
+  port = 6565
+}
+
+app.listen(port, function () {
+  console.log('App running at port ' + port)
 })
